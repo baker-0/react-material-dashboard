@@ -12,7 +12,7 @@ export default theme => ({
     display: 'flex',
     alignItems: 'center',
     padding: theme.spacing.unit,
-    backgroundColor: theme.palette.common.white
+    backgroundColor: theme.palette.common.black
   },
   optionSelected: {
     backgroundColor: theme.palette.primary.light,

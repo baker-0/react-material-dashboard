@@ -1,22 +1,22 @@
 import { white, black } from '../common/colors';
-
+// 111219
 export default {
   common: {
-    black,
-    white,
-    neutral: '#E4E7EB',
+    black: '#111219',
+    white: '#FFFFFF',
+    neutral: '#2e3144',
     muted: '#9EA0A4'
   },
   primary: {
     contrastText: white,
-    main: '#0767DB',
-    light: '#F6F9FD',
-    dark: '#0B48A0'
+    main: '#E8B137',
+    light: '#AF7F37',
+    dark: '#796155'
   },
   secondary: {
     contrastText: white,
     main: '#7d58ff',
-    light: '',
+    light: '#a36100',
     dark: '#37248F'
   },
   success: {
@@ -44,15 +44,15 @@ export default {
     dark: '#BF0E08'
   },
   text: {
-    primary: '#12161B',
+    primary: '#e6ecf2',
     secondary: '#66788A',
     disabled: '#A6B1BB'
   },
   background: {
-    default: '#f8fafc',
-    dark: '#172B4D',
-    paper: white
+    default: '#1F202D',
+    dark: '#111219',
+    paper: '#111219'
   },
-  border: '#DFE3E8',
-  divider: '#DFE3E8'
+  border: '#111219',
+  divider: '#35374f'
 };

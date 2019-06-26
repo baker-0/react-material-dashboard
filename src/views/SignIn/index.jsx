@@ -24,7 +24,7 @@ import {
 import { ArrowBack as ArrowBackIcon } from '@material-ui/icons';
 
 // Shared components
-import { Facebook as FacebookIcon, Google as GoogleIcon } from 'icons';
+import { Spotify as SpotifyIcon } from 'icons';
 
 // Component styles
 import styles from './styles';
@@ -89,23 +89,7 @@ class SignIn extends Component {
   };
 
   handleSignIn = async () => {
-    try {
-      const { history } = this.props;
-      const { values } = this.state;
-
-      this.setState({ isLoading: true });
-
-      await signIn(values.email, values.password);
-
-      localStorage.setItem('isAuthenticated', true);
-
-      history.push('/dashboard');
-    } catch (error) {
-      this.setState({
-        isLoading: false,
-        serviceError: error
-      });
-    }
+    window.location.replace(process.env.REACT_APP_API_URL + '/auth/spotify');
   };
 
   render() {
@@ -135,27 +119,7 @@ class SignIn extends Component {
           >
             <div className={classes.quote}>
               <div className={classes.quoteInner}>
-                <Typography
-                  className={classes.quoteText}
-                  variant="h1"
-                >
-                  Hella narwhal Cosby sweater McSweeney's, salvia kitsch before
-                  they sold out High Life.
-                </Typography>
-                <div className={classes.person}>
-                  <Typography
-                    className={classes.name}
-                    variant="body1"
-                  >
-                    Takamaru Ayako
-                  </Typography>
-                  <Typography
-                    className={classes.bio}
-                    variant="body2"
-                  >
-                    Manager at inVision
-                  </Typography>
-                </div>
+                <div className={classes.person} />
               </div>
             </div>
           </Grid>
@@ -186,7 +150,25 @@ class SignIn extends Component {
                     className={classes.subtitle}
                     variant="body1"
                   >
-                    Sign in with social media
+                    You're one step away from 
+                    <span
+                      aria-label="Fire"
+                      className="animated lightSpeedIn"
+                      id="fire1"
+                      role="img"
+                    >🔥</span>
+                    <span
+                      aria-label="Fire"
+                      className="animated lightSpeedIn"
+                      id="fire2"
+                      role="img"
+                    >🔥</span>
+                    <span
+                      aria-label="Fire"
+                      className="animated lightSpeedIn"
+                      id="fire3"
+                      role="img"
+                    >🔥</span>
                   </Typography>
                   <Button
                     className={classes.facebookButton}
@@ -195,98 +177,9 @@ class SignIn extends Component {
                     size="large"
                     variant="contained"
                   >
-                    <FacebookIcon className={classes.facebookIcon} />
-                    Login with Facebook
+                    <SpotifyIcon className={classes.facebookIcon} />
+                    Login with Spotify
                   </Button>
-                  <Button
-                    className={classes.googleButton}
-                    onClick={this.handleSignIn}
-                    size="large"
-                    variant="contained"
-                  >
-                    <GoogleIcon className={classes.googleIcon} />
-                    Login with Google
-                  </Button>
-                  <Typography
-                    className={classes.sugestion}
-                    variant="body1"
-                  >
-                    or login with email address
-                  </Typography>
-                  <div className={classes.fields}>
-                    <TextField
-                      className={classes.textField}
-                      label="Email address"
-                      name="email"
-                      onChange={event =>
-                        this.handleFieldChange('email', event.target.value)
-                      }
-                      type="text"
-                      value={values.email}
-                      variant="outlined"
-                    />
-                    {showEmailError && (
-                      <Typography
-                        className={classes.fieldError}
-                        variant="body2"
-                      >
-                        {errors.email[0]}
-                      </Typography>
-                    )}
-                    <TextField
-                      className={classes.textField}
-                      label="Password"
-                      name="password"
-                      onChange={event =>
-                        this.handleFieldChange('password', event.target.value)
-                      }
-                      type="password"
-                      value={values.password}
-                      variant="outlined"
-                    />
-                    {showPasswordError && (
-                      <Typography
-                        className={classes.fieldError}
-                        variant="body2"
-                      >
-                        {errors.password[0]}
-                      </Typography>
-                    )}
-                  </div>
-                  {submitError && (
-                    <Typography
-                      className={classes.submitError}
-                      variant="body2"
-                    >
-                      {submitError}
-                    </Typography>
-                  )}
-                  {isLoading ? (
-                    <CircularProgress className={classes.progress} />
-                  ) : (
-                    <Button
-                      className={classes.signInButton}
-                      color="primary"
-                      disabled={!isValid}
-                      onClick={this.handleSignIn}
-                      size="large"
-                      variant="contained"
-                    >
-                      Sign in now
-                    </Button>
-                  )}
-                  <Typography
-                    className={classes.signUp}
-                    variant="body1"
-                  >
-                    Don't have an account?{' '}
-                    <Link
-                      className={classes.signUpUrl}
-                      to="/sign-up"
-                    >
-                      Sign up
-                    </Link>
-                  </Typography>
                 </form>
               </div>
             </div>

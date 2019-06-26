@@ -17,7 +17,7 @@ export default theme => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundImage: 'url(/images/sign_up_1.jpg)',
+    backgroundImage: 'url(/images/sign_up_1.png)',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center'
@@ -27,7 +27,7 @@ export default theme => ({
     flexBasis: '600px'
   },
   quoteText: {
-    color: theme.palette.common.white,
+    color: '#FFFFFF',
     fontWeight: 300
   },
   name: {

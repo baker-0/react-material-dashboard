@@ -1,6 +1,6 @@
 export default theme => ({
   root: {
-    backgroundColor: theme.palette.common.white,
+    backgroundColor: theme.palette.common.black,
     display: 'flex',
     flexDirection: 'column',
     height: '100%',

@@ -12,8 +12,8 @@ export const data = {
         palette.warning.main
       ],
       borderWidth: 8,
-      borderColor: palette.common.white,
-      hoverBorderColor: palette.common.white
+      borderColor: palette.common.black,
+      hoverBorderColor: palette.common.neutral
     }
   ],
   labels: ['Desktop', 'Tablet', 'Mobile']
