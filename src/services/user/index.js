@@ -36,6 +36,28 @@ export const getUsers = (limit = 10) => {
   });
 };
 
+export const getTop = (timeRange) => {
+  return new Promise((resolve, reject) => {
+    const config = {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('spotify-auth')}`
+      }
+    }
+    let tracks = JSON.parse(sessionStorage.getItem(`spotify-top-${timeRange}`));
+    if (!tracks) {
+      axios.get(`${apiUrl}/user/top/tracks?time_range=${timeRange}`, config)
+        .then(res => {
+          console.log(res);
+          sessionStorage.setItem(`spotify-top-${timeRange}`, JSON.stringify(res.data.body.items))
+          resolve(res.data.body.items)
+        })
+        .catch(err => reject(err))
+    } else {
+      resolve(tracks)
+    }
+  })
+}
+
 export const getUser = id => {
   return new Promise((resolve, reject) => {
     const config = {

@@ -26,6 +26,8 @@ import {
   OrdersTable
 } from './components';
 
+import { getTop } from 'services/user'
+
 // Component styles
 const styles = theme => ({
   root: {
@@ -45,6 +47,13 @@ class Dashboard extends Component {
       window.location.replace('/dashboard');
     }
   }
+
+  componentDidMount() {
+    getTop('short_term')
+      .then((tracks) => console.log('tracks :', tracks))
+      .catch((err) => console.log(err));
+  }
+
   render() {
     const { classes } = this.props;
 
