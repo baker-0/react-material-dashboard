@@ -9,6 +9,8 @@ import { withStyles } from '@material-ui/core';
 // Material components
 import { Grid } from '@material-ui/core';
 
+import queryString from 'query-string';
+
 // Shared layouts
 import { Dashboard as DashboardLayout } from 'layouts';
 
@@ -35,6 +37,14 @@ const styles = theme => ({
 });
 
 class Dashboard extends Component {
+  constructor(props) {
+    super(props)
+    let query = queryString.parse(this.props.location.search);
+    if (query.token) { // check if JWT being passed in url
+      localStorage.setItem('spotify-auth', query.token);
+      window.location.replace('/dashboard');
+    }
+  }
   render() {
     const { classes } = this.props;
 
@@ -43,7 +53,7 @@ class Dashboard extends Component {
         <div className={classes.root}>
           <Grid
             container
-            spacing={4}
+            spacing={8}
           >
             <Grid
               item

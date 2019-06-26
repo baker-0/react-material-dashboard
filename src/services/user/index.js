@@ -2,6 +2,11 @@
 import users from 'data/users';
 import orders from 'data/orders';
 
+import axios from 'axios';
+
+const apiUrl = process.env.REACT_APP_API_URL;
+const webUrl = process.env.REACT_APP_WEB_URL;
+
 function lookupUser(user) {
   const userCopy = JSON.parse(JSON.stringify(user));
   const userOrders = userCopy.orders.map(id =>
@@ -33,18 +38,22 @@ export const getUsers = (limit = 10) => {
 
 export const getUser = id => {
   return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      const user = users.find(user => user.id === id);
-
-      if (user) {
-        resolve({
-          user: lookupUser(user)
-        });
-      } else {
-        reject({
-          error: 'User not found'
-        });
+    const config = {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('spotify-auth')}`
       }
-    }, 500);
-  });
+    }
+    let user = JSON.parse(sessionStorage.getItem('spotify-me'));
+    if (!user) {
+      axios.get(`${apiUrl}/me`, config)
+        .then(res => {
+          console.log(res);
+          sessionStorage.setItem('spotify-me', JSON.stringify(res.data.body))
+          resolve(res.data.body)
+        })
+        .catch(err => reject(err))
+    } else {
+      resolve(user)
+    }
+  })
 };

@@ -36,7 +36,34 @@ import {
 // Component styles
 import styles from './styles';
 
+
+import { getUser } from 'services/user'
+
+
 class Sidebar extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      user: {
+        displayName: '',
+        avatarSrc: '',
+        product: ''
+      },
+      loading: true
+    }
+  }
+  componentDidMount() {
+    getUser()
+      .then(user => this.setState({
+        user: {
+          displayName: user.display_name,
+          avatarSrc: user.images[0].url,
+          product: user.product
+        },
+        loading: false
+      }))
+      .catch(err => console.error(err));
+  }
   render() {
     const { classes, className } = this.props;
 
@@ -50,9 +77,9 @@ class Sidebar extends Component {
             to="/"
           >
             <img
-              alt="Brainalytica logo"
+              alt="Nu logo"
               className={classes.logoImage}
-              src="/images/logos/brainalytica_logo.svg"
+              src="/images/logos/nu_logo.svg"
             />
           </Link>
         </div>
@@ -60,22 +87,22 @@ class Sidebar extends Component {
         <div className={classes.profile}>
           <Link to="/account">
             <Avatar
-              alt="Roman Kutepov"
+              alt={this.state.user.displayName}
               className={classes.avatar}
-              src="/images/avatars/avatar_1.png"
+              src={this.state.user.avatarSrc}
             />
           </Link>
           <Typography
             className={classes.nameText}
             variant="h6"
           >
-            Roman Kutepov
+            {this.state.user.displayName}
           </Typography>
           <Typography
             className={classes.bioText}
             variant="caption"
           >
-            Brain Director
+            {this.state.user.product} mans
           </Typography>
         </div>
         <Divider className={classes.profileDivider} />

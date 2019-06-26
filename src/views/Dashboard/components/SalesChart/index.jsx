@@ -45,7 +45,7 @@ class SalesChart extends Component {
         className={rootClassName}
       >
         <PortletHeader noDivider>
-          <PortletLabel title="Latest sales" />
+          <PortletLabel title="Mainstream-o-meter" />
           <PortletToolbar>
             <Button
               className={classes.dropdownButton}
