@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 // Externals
 import PropTypes from 'prop-types';
 import compose from 'recompose/compose';
-import _ from 'underscore';
 
 // Material helpers
 import { withStyles } from '@material-ui/core';
@@ -14,8 +13,6 @@ import {
   Grid,
   Button,
   IconButton,
-  CircularProgress,
-  TextField,
   Typography
 } from '@material-ui/core';
 
@@ -30,11 +27,6 @@ import styles from './styles';
 
 class SignIn extends Component {
   state = {
-    errors: {
-      email: null,
-      password: null
-    },
-    isValid: false,
     isLoading: false,
     submitError: null
   };
@@ -52,14 +44,6 @@ class SignIn extends Component {
 
   render() {
     const { classes } = this.props;
-    const {
-      values,
-      errors,
-      isValid,
-      submitError,
-      isLoading
-    } = this.state;
-
     return (
       <div className={classes.root}>
         <Grid
