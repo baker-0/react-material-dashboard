@@ -78,7 +78,6 @@ class Sidebar extends Component {
           >
             <img
               alt="Nu logo"
-              className={classes.logoImage}
               src="/images/logos/nu_logo.svg"
             />
           </Link>

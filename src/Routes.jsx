@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-
+import { PrivateRoute } from './PrivateRoute'
 // Views
+import Loading from './views/Loading'
 import Dashboard from './views/Dashboard';
 import ProductList from './views/ProductList';
 import UserList from './views/UserList';
@@ -23,10 +24,16 @@ export default class Routes extends Component {
           from="/"
           to="/dashboard"
         />
-        <Route
+        <PrivateRoute
+          authed={localStorage.getItem('isAuthenticated') === 'true'}
           component={Dashboard}
           exact
           path="/dashboard"
+        />
+        <Route
+          component={Loading}
+          exact
+          path="/authorized"
         />
         <Route
           component={UserList}

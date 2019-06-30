@@ -4,7 +4,6 @@ import { Link, withRouter } from 'react-router-dom';
 // Externals
 import PropTypes from 'prop-types';
 import compose from 'recompose/compose';
-import validate from 'validate.js';
 import _ from 'underscore';
 
 // Material helpers
@@ -29,28 +28,8 @@ import { Spotify as SpotifyIcon } from 'icons';
 // Component styles
 import styles from './styles';
 
-// Form validation schema
-import schema from './schema';
-
-// Service methods
-const signIn = () => {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      resolve(true);
-    }, 1500);
-  });
-};
-
 class SignIn extends Component {
   state = {
-    values: {
-      email: '',
-      password: ''
-    },
-    touched: {
-      email: false,
-      password: false
-    },
     errors: {
       email: null,
       password: null
@@ -66,45 +45,20 @@ class SignIn extends Component {
     history.goBack();
   };
 
-  validateForm = _.debounce(() => {
-    const { values } = this.state;
-
-    const newState = { ...this.state };
-    const errors = validate(values, schema);
-
-    newState.errors = errors || {};
-    newState.isValid = errors ? false : true;
-
-    this.setState(newState);
-  }, 300);
-
-  handleFieldChange = (field, value) => {
-    const newState = { ...this.state };
-
-    newState.submitError = null;
-    newState.touched[field] = true;
-    newState.values[field] = value;
-
-    this.setState(newState, this.validateForm);
-  };
-
   handleSignIn = async () => {
-    window.location.replace(process.env.REACT_APP_API_URL + '/auth/spotify');
+    window.open(process.env.REACT_APP_API_URL + '/auth/spotify');
+    window.location.replace('/authorized')
   };
 
   render() {
     const { classes } = this.props;
     const {
       values,
-      touched,
       errors,
       isValid,
       submitError,
       isLoading
     } = this.state;
-
-    const showEmailError = touched.email && errors.email;
-    const showPasswordError = touched.password && errors.password;
 
     return (
       <div className={classes.root}>
