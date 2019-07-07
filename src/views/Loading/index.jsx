@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Loading.css';
 import './LandingPage.css';
-import { Spinner } from './components/Spinner';
+import { Spinner } from 'components/Spinner';
 import queryString from 'query-string'
 const apiUrl= process.env.REACT_APP_API_URL;
 const webUrl = process.env.REACT_APP_WEB_URL
