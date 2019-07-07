@@ -4,12 +4,12 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { Scatter } from 'react-chartjs-2';
-
 // Material helpers
 import { withStyles } from '@material-ui/core';
 
 // Material components
-import { Button, CircularProgress, Typography } from '@material-ui/core';
+import { Button, Typography } from '@material-ui/core';
+import { Spinner } from 'components/Spinner'
 
 // Material icons
 import {
@@ -69,7 +69,7 @@ class SalesChart extends Component {
     if (isLoading) {
       return (
         <div className={classes.progressWrapper}>
-          <CircularProgress />
+          <Spinner />
         </div>
       );
     }
