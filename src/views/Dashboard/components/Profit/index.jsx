@@ -11,7 +11,7 @@ import { withStyles } from '@material-ui/core';
 import { Typography } from '@material-ui/core';
 
 // Material icons
-import { AttachMoney as AttachMoneyIcon } from '@material-ui/icons';
+import { Hearing as HearingIcon } from '@material-ui/icons';
 
 // Shared components
 import { Paper } from 'components';
@@ -36,17 +36,17 @@ class Profit extends Component {
               className={classes.title}
               variant="body2"
             >
-              TOTAL PROFIT
+              TOTAL LISTENS
             </Typography>
             <Typography
               className={classes.value}
               variant="h3"
             >
-              $23,200
+              323
             </Typography>
           </div>
           <div className={classes.iconWrapper}>
-            <AttachMoneyIcon className={classes.icon} />
+            <HearingIcon className={classes.icon} />
           </div>
         </div>
       </Paper>

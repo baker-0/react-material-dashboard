@@ -13,7 +13,7 @@ import { Typography } from '@material-ui/core';
 // Material icons
 import {
   ArrowUpward as ArrowUpwardIcon,
-  PeopleOutlined as PeopleIcon
+  Album as AlbumIcon
 } from '@material-ui/icons';
 
 // Shared components
@@ -39,7 +39,7 @@ class Users extends Component {
               className={classes.title}
               variant="body2"
             >
-              TOTAL USERS
+              TOP ALBUM
             </Typography>
             <Typography
               className={classes.value}
@@ -49,7 +49,7 @@ class Users extends Component {
             </Typography>
           </div>
           <div className={classes.iconWrapper}>
-            <PeopleIcon className={classes.icon} />
+            <AlbumIcon className={classes.icon} />
           </div>
         </div>
         <div className={classes.footer}>

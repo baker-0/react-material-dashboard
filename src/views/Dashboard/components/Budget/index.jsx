@@ -13,7 +13,7 @@ import { Typography } from '@material-ui/core';
 // Material icons
 import {
   ArrowDownward as ArrowDownwardIcon,
-  Money as MoneyIcon
+  StarBorder as StarBorderIcon
 } from '@material-ui/icons';
 
 // Shared components
@@ -39,17 +39,17 @@ class Budget extends Component {
               className={classes.title}
               variant="body2"
             >
-              BUDGET
+              TOP ARTIST
             </Typography>
             <Typography
               className={classes.value}
               variant="h3"
             >
-              $24,000
+              Drake
             </Typography>
           </div>
           <div className={classes.iconWrapper}>
-            <MoneyIcon className={classes.icon} />
+            <StarBorderIcon className={classes.icon} />
           </div>
         </div>
         <div className={classes.footer}>

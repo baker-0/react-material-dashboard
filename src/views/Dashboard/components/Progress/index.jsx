@@ -11,7 +11,7 @@ import { withStyles } from '@material-ui/core';
 import { Typography, LinearProgress } from '@material-ui/core';
 
 // Material icons
-import { InsertChartOutlined as InsertChartIcon } from '@material-ui/icons';
+import { MusicNote as MusicNoteIcon } from '@material-ui/icons';
 
 // Shared components
 import { Paper } from 'components';
@@ -36,7 +36,7 @@ class Progress extends Component {
               className={classes.title}
               variant="body2"
             >
-              PROGRESS
+              TOP TRACK
             </Typography>
             <Typography
               className={classes.value}
@@ -46,7 +46,7 @@ class Progress extends Component {
             </Typography>
           </div>
           <div className={classes.iconWrapper}>
-            <InsertChartIcon className={classes.icon} />
+            <MusicNoteIcon className={classes.icon} />
           </div>
         </div>
         <div className={classes.footer}>
